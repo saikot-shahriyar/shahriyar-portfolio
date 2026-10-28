@@ -3,26 +3,15 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
-import { Menu, X, ArrowUpRight } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./Icons";
+import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
   { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
+  { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
+  { name: "Education", href: "#education" },
   { name: "Contact", href: "#contact" },
-];
-
-const SOCIAL_LINKS = [
-  {
-    name: "GitHub",
-    href: "https://github.com/saikot-shahriyar",
-    icon: GithubIcon,
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/saikot-shahriyar/",
-    icon: LinkedinIcon,
-  },
 ];
 
 export function Navbar() {
@@ -86,13 +75,13 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
-            <div className="flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-4 lg:gap-6" aria-label="Main navigation">
+            <div className="flex items-center gap-1 sm:gap-2 lg:gap-4">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md py-1 px-1.5"
+                  className="text-xs lg:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md py-1 px-2"
                 >
                   {link.name}
                 </Link>
@@ -101,27 +90,7 @@ export function Navbar() {
 
             <div className="h-4 w-px bg-slate-200 dark:bg-slate-800" aria-hidden="true" />
 
-            {/* Social Links */}
-            <div className="flex items-center gap-3">
-              {SOCIAL_LINKS.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-foreground hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                    aria-label={`${social.name} (opens in new tab)`}
-                    title={social.name}
-                  >
-                    <Icon className="w-4 h-4" />
-                  </a>
-                );
-              })}
-
-              <ThemeToggle />
-            </div>
+            <ThemeToggle />
           </nav>
 
           {/* Mobile Menu & Theme Toggle Controls */}
@@ -148,47 +117,25 @@ export function Navbar() {
           aria-modal="true"
           aria-label="Mobile navigation"
         >
-          <div className="flex flex-col gap-3 pt-2">
-            <span className="text-xs font-semibold tracking-widest uppercase text-muted">
+          <div className="flex flex-col gap-2 pt-2">
+            <span className="text-xs font-semibold tracking-widest uppercase text-muted font-mono mb-2">
               Navigation
             </span>
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map((link, idx) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={closeMenu}
-                className="text-2xl font-semibold py-2.5 text-foreground hover:text-blue-600 dark:hover:text-blue-400 border-b border-slate-100 dark:border-slate-850 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                className="flex items-center justify-between text-xl font-semibold py-3 text-foreground hover:text-blue-600 dark:hover:text-blue-400 border-b border-slate-100 dark:border-slate-800/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
-                {link.name}
+                <span>{link.name}</span>
+                <span className="font-mono text-xs text-muted font-normal">0{idx + 1}</span>
               </Link>
             ))}
           </div>
 
-          <div className="flex flex-col gap-4 pt-6 border-t border-slate-200 dark:border-slate-800 pb-8">
-            <span className="text-xs font-semibold tracking-widest uppercase text-muted">
-              Connect
-            </span>
-            <div className="grid grid-cols-2 gap-3">
-              {SOCIAL_LINKS.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={closeMenu}
-                    className="flex items-center justify-between p-3 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500/50 bg-slate-50 dark:bg-slate-900/60 text-sm font-medium text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                  >
-                    <span className="flex items-center gap-2">
-                      <Icon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                      {social.name}
-                    </span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-muted" />
-                  </a>
-                );
-              })}
-            </div>
+          <div className="pt-6 border-t border-slate-200 dark:border-slate-800 text-xs text-muted font-mono text-center">
+            Shahriyar &bull; Full-Stack Developer
           </div>
         </div>
       )}

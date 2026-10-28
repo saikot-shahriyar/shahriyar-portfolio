@@ -2,6 +2,28 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Download, ArrowDown, Sparkles } from "lucide-react";
+import { GithubIcon, LinkedinIcon, FacebookIcon } from "./Icons";
+
+const SOCIAL_LINKS = [
+  {
+    name: "GitHub",
+    href: "https://github.com/saikot-shahriyar",
+    icon: GithubIcon,
+    label: "View GitHub profile",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/saikot-shahriyar/",
+    icon: LinkedinIcon,
+    label: "View LinkedIn profile",
+  },
+  {
+    name: "Facebook",
+    href: "https://facebook.com/saikot.shahriyar",
+    icon: FacebookIcon,
+    label: "View Facebook profile",
+  },
+];
 
 export function Hero() {
   return (
@@ -74,23 +96,24 @@ export function Hero() {
               </a>
             </div>
 
-            {/* Subtle editorial scroll indicator */}
-            <div className="pt-8 sm:pt-12 mt-8 sm:mt-10 border-t border-slate-200/80 dark:border-slate-800/80 w-full max-w-lg">
-              <a
-                href="#about"
-                aria-label="Scroll to About section"
-                className="group inline-flex items-center gap-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 rounded-md py-1.5 px-2 -ml-2 cursor-pointer"
-              >
-                <span className="text-[11px] sm:text-xs font-mono font-medium tracking-[0.25em] uppercase">
-                  Scroll
-                </span>
-                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full border border-slate-200 dark:border-slate-800 group-hover:border-blue-500/50 bg-slate-100/60 dark:bg-slate-900/60 transition-colors">
-                  <ArrowDown
-                    className="w-3 h-3 text-slate-400 dark:text-slate-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 animate-gentle-float transition-colors"
-                    aria-hidden="true"
-                  />
-                </span>
-              </a>
+            {/* Social Links */}
+            <div className="flex items-center gap-3 mt-6">
+              {SOCIAL_LINKS.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${social.label} (opens in a new tab)`}
+                    title={social.name}
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:bg-blue-50/50 dark:hover:bg-blue-950/30 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 shadow-xs cursor-pointer"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 

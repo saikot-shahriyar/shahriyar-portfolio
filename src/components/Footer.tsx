@@ -25,28 +25,6 @@ export function Footer() {
 
           {/* Social Links & Back to Top */}
           <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
-            <a
-              href="https://github.com/saikot-shahriyar"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-foreground hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-              aria-label="GitHub profile (opens in a new tab)"
-            >
-              <GithubIcon className="w-4 h-4" />
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/saikot-shahriyar/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-foreground hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-              aria-label="LinkedIn profile (opens in a new tab)"
-            >
-              <LinkedinIcon className="w-4 h-4" />
-            </a>
-
-            <div className="h-4 w-px bg-slate-200 dark:bg-slate-800" aria-hidden="true" />
-
             <Link
               href="#top"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500/40 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 shadow-2xs"
